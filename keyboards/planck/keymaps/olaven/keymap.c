@@ -38,6 +38,26 @@ enum planck_keycodes {
   EXT_PLV
 };
 
+enum unicode_names {
+    AE,
+    ae,
+    OE,
+    oe,
+    AA,
+    aa
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [AE]  = 0x00D8,
+    [ae]  = 0x00E6,
+    [OE]  = 0x00C6,
+    [oe]  = 0x00F8,
+    [AA]  = 0x00C5,
+    [aa]  = 0x00E5,
+};
+
+// usage in keymap XP(unicode_map[ae], unicode_map[AE])
+
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
@@ -60,7 +80,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
     BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
-
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
@@ -110,11 +129,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_planck_grid(
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    KC_DEL , XP(ae, AE),  XP(oe, OE),   XP(aa, AA),   _______,   _______,   _______,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
+    _______, KC_F1  ,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
+    _______, KC_F7  ,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
+//KC_F7,   KC_F8,   KC_F9,   KC_F10,
 /* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |

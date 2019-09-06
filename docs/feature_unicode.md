@@ -94,7 +94,7 @@ The following input modes are available:
 
   To enable, go to _System Preferences > Keyboard > Input Sources_, add _Unicode Hex Input_ to the list (it's under _Other_), then activate it from the input dropdown in the Menu Bar.
   By default, this mode uses the left Option key (`KC_LALT`) for Unicode input, but this can be changed by defining [`UNICODE_KEY_OSX`](#input-key-configuration) with another keycode.
-
+    
   !> Using the _Unicode Hex Input_ input source may disable some Option based shortcuts, such as Option + Left Arrow and Option + Right Arrow.
 
 * **`UC_LNX`**: Linux built-in IBus Unicode input. Supports code points up to `0x10FFFF` (all possible code points).
